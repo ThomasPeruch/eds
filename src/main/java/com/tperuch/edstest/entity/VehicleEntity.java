@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "veiculo")
+@Table(name = "veiculos")
 public class VehicleEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +21,7 @@ public class VehicleEntity {
     @Column(name = "ano")
     private Integer year;
 
-    @Column(name = "description")
+    @Column(name = "descricao")
     private String description;
 
     @Column(name = "vendido")
@@ -34,7 +34,7 @@ public class VehicleEntity {
     @Column(name = "chassi")
     private String chassis;
 
-    @Column(name = "price")
+    @Column(name = "preco")
     private BigDecimal price;
 
     public Long getId() {
