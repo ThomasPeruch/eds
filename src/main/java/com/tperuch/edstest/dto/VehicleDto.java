@@ -1,40 +1,42 @@
-package com.tperuch.edstest.entity;
+package com.tperuch.edstest.dto;
 
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.NumberFormat;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "veiculo")
-public class VehicleEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class VehicleDto {
     private Long id;
 
-    @Column(name = "veiculo")
+    @NotNull(message = "Veículo deve ser informado")
     private String vehicle;
 
-    @Column(name = "marca")
+    @NotNull(message = "Marca deve ser informada")
     private String brand;
 
-    @Column(name = "ano")
+    @NotNull(message = "Ano deve ser informado")
     private Integer year;
 
-    @Column(name = "description")
+    @NotNull(message = "Descricao deve ser informado")
     private String description;
 
-    @Column(name = "vendido")
     private boolean sold;
 
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
     private LocalDateTime created;
 
-    private LocalDateTime updated;
 
-    @Column(name = "chassi")
+    @NotNull(message = "Chassi deve ser informado")
     private String chassis;
 
-    @Column(name = "price")
+    @NotNull(message = "Preço deve ser informado")
+    @PositiveOrZero(message = "O valor não pode ser negativo")
+    @NumberFormat(style = NumberFormat.Style.CURRENCY)
     private BigDecimal price;
 
     public Long getId() {
@@ -91,14 +93,6 @@ public class VehicleEntity {
 
     public void setCreated(LocalDateTime created) {
         this.created = created;
-    }
-
-    public LocalDateTime getUpdated() {
-        return updated;
-    }
-
-    public void setUpdated(LocalDateTime updated) {
-        this.updated = updated;
     }
 
     public String getChassis() {
