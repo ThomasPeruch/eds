@@ -6,9 +6,12 @@ import com.tperuch.edstest.exception.AlreadyInUseException;
 import com.tperuch.edstest.mapper.VehicleMapper;
 import com.tperuch.edstest.repository.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class VehicleService {
@@ -26,6 +29,11 @@ public class VehicleService {
         VehicleEntity vehicleEntity = VehicleMapper.mapToEntity(vehicleDto);
         vehicleEntity.setCreated(LocalDateTime.now());
         return VehicleMapper.mapToDto(repository.save(vehicleEntity));
+    }
+
+    public Page<VehicleDto> findAll(PageRequest pageRequest){
+        Page<VehicleEntity> vehicles = repository.findAll(pageRequest);
+        return vehicles.map(VehicleMapper::mapToDto);
 
     }
 

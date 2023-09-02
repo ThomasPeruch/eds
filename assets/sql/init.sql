@@ -8,6 +8,6 @@ CREATE TABLE if not exists public.veiculos(
     created timestamp not null,
     updated timestamp,
     chassi VARCHAR(80) not null,
-    preco money not null,
+    preco decimal not null,
 	primary key (id)
 );
