@@ -19,7 +19,6 @@ public class VehicleDto {
 
     @NotNull(message = "Marca deve ser informada")
     @NotBlank(message = "Marca deve ser informada")
-    @PositiveOrZero(message = "O valor não pode ser negativo")
     private String brand;
 
     @NotNull(message = "Ano deve ser informado")
