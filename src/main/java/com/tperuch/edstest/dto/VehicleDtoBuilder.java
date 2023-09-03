@@ -14,6 +14,7 @@ public final class VehicleDtoBuilder {
     private @NotNull(message = "Descricao deve ser informado") String description;
     private boolean sold;
     private LocalDateTime created;
+    private LocalDateTime updated;
     private @NotNull(message = "Chassi deve ser informado") String chassis;
     private @NotNull(message = "Preço deve ser informado") @PositiveOrZero(message = "O valor não pode ser negativo") BigDecimal price;
 
@@ -59,6 +60,11 @@ public final class VehicleDtoBuilder {
         return this;
     }
 
+    public VehicleDtoBuilder updated(LocalDateTime updated) {
+        this.updated = updated;
+        return this;
+    }
+
     public VehicleDtoBuilder chassis(String chassis) {
         this.chassis = chassis;
         return this;
@@ -78,6 +84,7 @@ public final class VehicleDtoBuilder {
         vehicleDto.setDescription(description);
         vehicleDto.setSold(sold);
         vehicleDto.setCreated(created);
+        vehicleDto.setUpdated(updated);
         vehicleDto.setChassis(chassis);
         vehicleDto.setPrice(price);
         return vehicleDto;

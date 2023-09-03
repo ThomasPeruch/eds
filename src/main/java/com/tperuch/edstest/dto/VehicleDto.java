@@ -30,6 +30,9 @@ public class VehicleDto {
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
     private LocalDateTime created;
 
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
+    private LocalDateTime updated;
 
     @NotNull(message = "Chassi deve ser informado")
     private String chassis;
@@ -95,6 +98,14 @@ public class VehicleDto {
         this.created = created;
     }
 
+    public LocalDateTime getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(LocalDateTime updated) {
+        this.updated = updated;
+    }
+
     public String getChassis() {
         return chassis;
     }
@@ -110,4 +121,6 @@ public class VehicleDto {
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
+
+
 }

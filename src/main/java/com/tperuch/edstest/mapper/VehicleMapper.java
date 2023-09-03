@@ -2,13 +2,11 @@ package com.tperuch.edstest.mapper;
 
 import com.tperuch.edstest.dto.VehicleDto;
 import com.tperuch.edstest.dto.VehicleDtoBuilder;
-import com.tperuch.edstest.dto.VehicleUpdateDto;
-import com.tperuch.edstest.dto.VehicleUpdateDtoBuilder;
 import com.tperuch.edstest.entity.VehicleEntity;
 import com.tperuch.edstest.entity.VehicleEntityBuilder;
 
 public class VehicleMapper {
-    public static VehicleEntity mapToEntity(VehicleDto vehicleDto){
+    public static VehicleEntity mapToEntity(VehicleDto vehicleDto) {
         return VehicleEntityBuilder.builder()
                 .vehicle(vehicleDto.getVehicle())
                 .brand(vehicleDto.getBrand())
@@ -20,7 +18,7 @@ public class VehicleMapper {
                 .build();
     }
 
-    public static VehicleDto mapToDto(VehicleEntity vehicleEntity){
+    public static VehicleDto mapToDto(VehicleEntity vehicleEntity) {
         return VehicleDtoBuilder.builder()
                 .id(vehicleEntity.getId())
                 .vehicle(vehicleEntity.getVehicle())
@@ -30,12 +28,13 @@ public class VehicleMapper {
                 .year(vehicleEntity.getYear())
                 .brand(vehicleEntity.getBrand())
                 .created(vehicleEntity.getCreated())
+                .updated(vehicleEntity.getUpdated())
                 .price(vehicleEntity.getPrice())
                 .build();
     }
 
-    public static VehicleUpdateDto mapToUpdateDto(VehicleEntity vehicleEntity){
-        return VehicleUpdateDtoBuilder.builder()
+    public static VehicleDto mapToUpdateDto(VehicleEntity vehicleEntity) {
+        return VehicleDtoBuilder.builder()
                 .id(vehicleEntity.getId())
                 .vehicle(vehicleEntity.getVehicle())
                 .chassis(vehicleEntity.getChassis())

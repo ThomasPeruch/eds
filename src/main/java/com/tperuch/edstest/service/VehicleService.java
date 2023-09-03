@@ -2,7 +2,6 @@ package com.tperuch.edstest.service;
 
 import com.tperuch.edstest.dto.SearchVehicleCriteria;
 import com.tperuch.edstest.dto.VehicleDto;
-import com.tperuch.edstest.dto.VehicleUpdateDto;
 import com.tperuch.edstest.entity.VehicleEntity;
 import com.tperuch.edstest.exception.AlreadyInUseException;
 import com.tperuch.edstest.mapper.VehicleMapper;
@@ -21,7 +20,7 @@ public class VehicleService {
     @Autowired
     private VehicleRepository repository;
 
-    public VehicleDto saveVehicle(VehicleDto vehicleDto){
+    public VehicleDto saveVehicle(VehicleDto vehicleDto) {
         verifyYear(vehicleDto.getYear());
         verifyChassis(vehicleDto.getChassis());
         VehicleEntity vehicleEntity = VehicleMapper.mapToEntity(vehicleDto);
@@ -29,39 +28,39 @@ public class VehicleService {
         return VehicleMapper.mapToDto(repository.save(vehicleEntity));
     }
 
-    public Page<VehicleDto> findAll(PageRequest pageRequest){
+    public Page<VehicleDto> findAll(PageRequest pageRequest) {
         Page<VehicleEntity> vehicles = repository.findAll(pageRequest);
         return vehicles.map(VehicleMapper::mapToDto);
 
     }
 
-    public VehicleDto findVehicleById(Long id){
+    public VehicleDto findVehicleById(Long id) {
         VehicleEntity vehicleEntity = getVehicleEntity(id);
         return VehicleMapper.mapToDto(vehicleEntity);
     }
 
-    public Page<VehicleDto> findAllSpecificated(PageRequest pageRequest, SearchVehicleCriteria searchVehicleCriteria){
+    public Page<VehicleDto> findAllSpecificated(PageRequest pageRequest, SearchVehicleCriteria searchVehicleCriteria) {
         Page<VehicleEntity> vehicles = repository.findAll(searchVehicleCriteria, pageRequest);
         return vehicles.map(VehicleMapper::mapToDto);
     }
 
-    public VehicleUpdateDto updateVehicleById(Long id, VehicleDto vehicleDto){
+    public VehicleDto updateVehicleById(Long id, VehicleDto vehicleDto) {
         VehicleEntity mappedEntity = getVehicleEntity(id);
         verifyYear(vehicleDto.getYear());
-        if(!isSameChassis(mappedEntity.getChassis(), vehicleDto.getChassis())){
+        if (!isSameChassis(mappedEntity.getChassis(), vehicleDto.getChassis())) {
             verifyChassis(vehicleDto.getChassis());
         }
-        return VehicleMapper.mapToUpdateDto(repository.save(mapToUpdate(mappedEntity, vehicleDto)));
+        return VehicleMapper.mapToDto(repository.save(mapToUpdate(mappedEntity, vehicleDto)));
     }
 
     private void verifyChassis(String chassis) {
-        if(repository.existsByChassis(chassis)){
+        if (repository.existsByChassis(chassis)) {
             throw new AlreadyInUseException("Chassi já registrado, favor escolher outro");
         }
     }
 
     private void verifyYear(Integer year) {
-        if(IsYearInvalid(year)){
+        if (IsYearInvalid(year)) {
             throw new IllegalArgumentException("O Ano do veículo não pode ser posterior ao ano atual");
         }
     }
