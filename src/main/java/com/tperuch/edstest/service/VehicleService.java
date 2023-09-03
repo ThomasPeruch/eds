@@ -6,6 +6,7 @@ import com.tperuch.edstest.entity.VehicleEntity;
 import com.tperuch.edstest.exception.AlreadyInUseException;
 import com.tperuch.edstest.mapper.VehicleMapper;
 import com.tperuch.edstest.repository.VehicleRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -38,10 +39,14 @@ public class VehicleService {
     }
 
     public Page<VehicleDto> findAllSpecificated(PageRequest pageRequest, SearchVehicleCriteria searchVehicleCriteria){
-//        Page<VehicleEntity> vehicles = repository.findAll(pageRequest);
         Page<VehicleEntity> vehicles = repository.findAll(searchVehicleCriteria, pageRequest);
         return vehicles.map(VehicleMapper::mapToDto);
+    }
 
+    public VehicleDto findVehicleById(Long id){
+        VehicleEntity vehicleEntity = repository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Não foi encontrado veículo com o ID informado - " + id));
+        return VehicleMapper.mapToDto(vehicleEntity);
     }
 
 

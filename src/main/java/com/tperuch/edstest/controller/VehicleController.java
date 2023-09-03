@@ -42,4 +42,9 @@ public class VehicleController {
         PageRequest pageRequest = PageRequest.of(page, linesPerPage);
         return new ResponseEntity(vehicleService.findAllSpecificated(pageRequest,searchVehicleCriteria), HttpStatus.OK);
     }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Page<VehicleDto>> getVehicleById(@PathVariable Long id){
+        return new ResponseEntity(vehicleService.findVehicleById(id), HttpStatus.OK);
+    }
 }
