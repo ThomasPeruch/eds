@@ -3,23 +3,25 @@ package com.tperuch.edstest.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.PositiveOrZero;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Objects;
 
 public class VehicleDto {
     private Long id;
 
     @NotNull(message = "Veículo deve ser informado")
     @NotBlank(message = "Veículo deve ser informado")
+    @Pattern(regexp = "^[^\\/:*?\\\"<>|]+$", message = "Caracter invalido inserido no campo vehicle/veiculo")
     private String vehicle;
 
     @NotNull(message = "Marca deve ser informada")
     @NotBlank(message = "Marca deve ser informada")
+    @Pattern(regexp = "^[^\\/:*?\\\"<>|]+$", message = "Caracter invalido inserido no campo brand/marca")
     private String brand;
 
     @NotNull(message = "Ano deve ser informado")
@@ -27,6 +29,7 @@ public class VehicleDto {
 
     @NotNull(message = "Descricao deve ser informado")
     @NotBlank(message = "Descricao deve ser informada")
+    @Pattern(regexp = "^[^\\/:*?\\\"<>|]+$", message = "Caracter invalido inserido no campo description/descricao")
     private String description;
 
     private boolean sold;
@@ -41,6 +44,7 @@ public class VehicleDto {
 
     @NotNull(message = "Chassi deve ser informado")
     @NotBlank(message = "Chassi deve ser informado")
+    @Pattern(regexp = "^[^\\/:*?\\\"<>|]+$", message = "Caracter invalido inserido no campo brand/marca")
     private String chassis;
 
     @NotNull(message = "Preço deve ser informado")
