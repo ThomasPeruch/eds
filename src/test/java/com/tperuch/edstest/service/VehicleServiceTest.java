@@ -54,7 +54,7 @@ class VehicleServiceTest {
 
         Exception exception = assertThrows(Exception.class, () -> service.saveVehicle(dto));
 
-        assertEquals("O Ano do veículo não pode ser posterior ao ano atual", exception.getMessage());
+        assertEquals("O Ano do veiculo nao pode ser posterior ao ano atual", exception.getMessage());
         assertEquals(exception.getClass().getName(), IllegalArgumentException.class.getName());
     }
 
@@ -66,7 +66,7 @@ class VehicleServiceTest {
 
         Exception exception = assertThrows(Exception.class, () -> service.saveVehicle(dto));
 
-        assertEquals("Chassi já registrado, favor escolher outro", exception.getMessage());
+        assertEquals("Chassi ja registrado, favor escolher outro", exception.getMessage());
         assertEquals(exception.getClass().getName(), IllegalArgumentException.class.getName());
     }
 
@@ -141,7 +141,7 @@ class VehicleServiceTest {
 
         verify(repository, times(1)).findById(1L);
         verify(repository, times(1)).existsByChassis(anyString());
-        assertEquals("Chassi já registrado, favor escolher outro", exception.getMessage());
+        assertEquals("Chassi ja registrado, favor escolher outro", exception.getMessage());
         assertEquals(exception.getClass().getName(), IllegalArgumentException.class.getName());
     }
 

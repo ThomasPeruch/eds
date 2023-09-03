@@ -58,19 +58,19 @@ public class VehicleService {
 
     private void verifyChassis(String chassis) {
         if (repository.existsByChassis(chassis)) {
-            throw new IllegalArgumentException("Chassi já registrado, favor escolher outro");
+            throw new IllegalArgumentException("Chassi ja registrado, favor escolher outro");
         }
     }
 
     private void verifyYear(Integer year) {
         if (IsYearInvalid(year)) {
-            throw new IllegalArgumentException("O Ano do veículo não pode ser posterior ao ano atual");
+            throw new IllegalArgumentException("O Ano do veiculo nao pode ser posterior ao ano atual");
         }
     }
 
     private VehicleEntity getVehicleEntity(Long id) {
         return repository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Não foi encontrado veículo com o ID informado - " + id));
+                .orElseThrow(() -> new EntityNotFoundException("Nao foi encontrado veiculo com o ID informado - " + id));
     }
 
     private boolean isSameChassis(String entityChassis, String chassisFromRequest) {

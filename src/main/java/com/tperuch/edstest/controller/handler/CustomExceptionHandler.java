@@ -8,13 +8,12 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @ControllerAdvice
 public class CustomExceptionHandler {
 
     @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<ErrorDto> illegalArgumentException(IllegalArgumentException exception){
+    public ResponseEntity<ErrorDto> illegalArgumentException(IllegalArgumentException exception) {
         return new ResponseEntity<>(new ErrorDto(
                 LocalDateTime.now(),
                 exception.getClass().getName(),
@@ -23,16 +22,16 @@ public class CustomExceptionHandler {
     }
 
     @ExceptionHandler(EntityNotFoundException.class)
-    public ResponseEntity<ErrorDto> entityNotFoundException(EntityNotFoundException exception){
+    public ResponseEntity<ErrorDto> entityNotFoundException(EntityNotFoundException exception) {
         return new ResponseEntity<>(new ErrorDto(
                 LocalDateTime.now(),
                 exception.getClass().getName(),
-                HttpStatus.NOT_FOUND.value(),
-                exception.getMessage()), HttpStatus.NOT_FOUND);
+                HttpStatus.BAD_REQUEST.value(),
+                exception.getMessage()), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<ErrorDto> methodArgumentNotValidException(MethodArgumentNotValidException exception){
+    public ResponseEntity<ErrorDto> methodArgumentNotValidException(MethodArgumentNotValidException exception) {
         return new ResponseEntity<>(new ErrorDto(
                 LocalDateTime.now(),
                 exception.getClass().getName(),

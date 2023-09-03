@@ -9,6 +9,7 @@ import org.springframework.format.annotation.NumberFormat;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class VehicleDto {
     private Long id;
@@ -126,6 +127,4 @@ public class VehicleDto {
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
-
-
 }
