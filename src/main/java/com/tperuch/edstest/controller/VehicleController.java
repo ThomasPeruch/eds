@@ -48,7 +48,13 @@ public class VehicleController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<Page<VehicleDto>> updateVehicleById(@PathVariable Long id, @RequestBody VehicleDto vehicleDto){
+    public ResponseEntity<VehicleDto> updateVehicleById(@PathVariable Long id, @RequestBody VehicleDto vehicleDto){
         return new ResponseEntity(vehicleService.updateVehicleById(id,vehicleDto), HttpStatus.OK);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<VehicleDto> deleteVehicleById(@PathVariable Long id){
+        vehicleService.deleteVehicleById(id);
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 }

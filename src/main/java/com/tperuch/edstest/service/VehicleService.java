@@ -53,6 +53,10 @@ public class VehicleService {
         return VehicleMapper.mapToDto(repository.save(mapToUpdate(vehicle, vehicleDto)));
     }
 
+    public void deleteVehicleById(Long id) {
+        repository.delete(getVehicleEntity(id));
+    }
+
     private void verifyChassis(String chassis) {
         if (repository.existsByChassis(chassis)) {
             throw new AlreadyInUseException("Chassi já registrado, favor escolher outro");
