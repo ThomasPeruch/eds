@@ -3,6 +3,7 @@ package com.tperuch.edstest.controller;
 import com.tperuch.edstest.dto.SearchVehicleCriteria;
 import com.tperuch.edstest.dto.VehicleDto;
 import com.tperuch.edstest.service.VehicleService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -18,7 +19,7 @@ public class VehicleController {
     private VehicleService vehicleService;
 
     @PostMapping
-    public ResponseEntity<VehicleDto> saveVehicle(@RequestBody VehicleDto vehicleDto){
+    public ResponseEntity<VehicleDto> saveVehicle(@RequestBody @Valid VehicleDto vehicleDto){
         return new ResponseEntity(vehicleService.saveVehicle(vehicleDto), HttpStatus.CREATED);
     }
 
@@ -33,7 +34,7 @@ public class VehicleController {
 
     @GetMapping(value = "/search")
     public ResponseEntity<Page<VehicleDto>> getPaginatedAndFilteredVehicles(
-            SearchVehicleCriteria searchVehicleCriteria,
+            @Valid SearchVehicleCriteria searchVehicleCriteria,
             @RequestParam(value = "page", defaultValue = "0") Integer page,
             @RequestParam(value = "linesPerPage", defaultValue = "5") Integer linesPerPage
 
@@ -48,7 +49,7 @@ public class VehicleController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<VehicleDto> updateVehicleById(@PathVariable Long id, @RequestBody VehicleDto vehicleDto){
+    public ResponseEntity<VehicleDto> updateVehicleById(@PathVariable Long id, @RequestBody @Valid VehicleDto vehicleDto){
         return new ResponseEntity(vehicleService.updateVehicleById(id,vehicleDto), HttpStatus.OK);
     }
 

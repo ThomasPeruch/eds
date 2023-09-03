@@ -32,19 +32,4 @@ public class VehicleMapper {
                 .price(vehicleEntity.getPrice())
                 .build();
     }
-
-    public static VehicleDto mapToUpdateDto(VehicleEntity vehicleEntity) {
-        return VehicleDtoBuilder.builder()
-                .id(vehicleEntity.getId())
-                .vehicle(vehicleEntity.getVehicle())
-                .chassis(vehicleEntity.getChassis())
-                .description(vehicleEntity.getDescription())
-                .sold(vehicleEntity.isSold())
-                .year(vehicleEntity.getYear())
-                .brand(vehicleEntity.getBrand())
-                .created(vehicleEntity.getCreated())
-                .updated(vehicleEntity.getUpdated())
-                .price(vehicleEntity.getPrice())
-                .build();
-    }
 }

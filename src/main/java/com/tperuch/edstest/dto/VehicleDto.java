@@ -1,6 +1,7 @@
 package com.tperuch.edstest.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -13,15 +14,19 @@ public class VehicleDto {
     private Long id;
 
     @NotNull(message = "Veículo deve ser informado")
+    @NotBlank(message = "Veículo deve ser informado")
     private String vehicle;
 
     @NotNull(message = "Marca deve ser informada")
+    @NotBlank(message = "Marca deve ser informada")
+    @PositiveOrZero(message = "O valor não pode ser negativo")
     private String brand;
 
     @NotNull(message = "Ano deve ser informado")
     private Integer year;
 
     @NotNull(message = "Descricao deve ser informado")
+    @NotBlank(message = "Descricao deve ser informada")
     private String description;
 
     private boolean sold;
@@ -35,10 +40,11 @@ public class VehicleDto {
     private LocalDateTime updated;
 
     @NotNull(message = "Chassi deve ser informado")
+    @NotBlank(message = "Chassi deve ser informado")
     private String chassis;
 
     @NotNull(message = "Preço deve ser informado")
-    @PositiveOrZero(message = "O valor não pode ser negativo")
+    @PositiveOrZero(message = "O Preço não pode ser negativo")
     @NumberFormat(style = NumberFormat.Style.CURRENCY)
     private BigDecimal price;
 

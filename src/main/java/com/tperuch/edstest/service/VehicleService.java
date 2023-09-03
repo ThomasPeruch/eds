@@ -3,7 +3,6 @@ package com.tperuch.edstest.service;
 import com.tperuch.edstest.dto.SearchVehicleCriteria;
 import com.tperuch.edstest.dto.VehicleDto;
 import com.tperuch.edstest.entity.VehicleEntity;
-import com.tperuch.edstest.exception.AlreadyInUseException;
 import com.tperuch.edstest.mapper.VehicleMapper;
 import com.tperuch.edstest.repository.VehicleRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -59,7 +58,7 @@ public class VehicleService {
 
     private void verifyChassis(String chassis) {
         if (repository.existsByChassis(chassis)) {
-            throw new AlreadyInUseException("Chassi já registrado, favor escolher outro");
+            throw new IllegalArgumentException("Chassi já registrado, favor escolher outro");
         }
     }
 
