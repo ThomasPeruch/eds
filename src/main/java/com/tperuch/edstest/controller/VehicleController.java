@@ -1,5 +1,6 @@
 package com.tperuch.edstest.controller;
 
+import com.tperuch.edstest.dto.SearchVehicleCriteria;
 import com.tperuch.edstest.dto.VehicleDto;
 import com.tperuch.edstest.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +30,16 @@ public class VehicleController {
             ){
         PageRequest pageRequest = PageRequest.of(page, linesPerPage);
         return new ResponseEntity(vehicleService.findAll(pageRequest), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/search")
+    public ResponseEntity<Page<VehicleDto>> getPaginatedAndFilteredVehicles(
+            SearchVehicleCriteria searchVehicleCriteria,
+            @RequestParam(value = "page", defaultValue = "0") Integer page,
+            @RequestParam(value = "linesPerPage", defaultValue = "5") Integer linesPerPage
+
+    ){
+        PageRequest pageRequest = PageRequest.of(page, linesPerPage);
+        return new ResponseEntity(vehicleService.findAllSpecificated(pageRequest,searchVehicleCriteria), HttpStatus.OK);
     }
 }

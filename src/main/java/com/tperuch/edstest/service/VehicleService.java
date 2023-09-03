@@ -1,5 +1,6 @@
 package com.tperuch.edstest.service;
 
+import com.tperuch.edstest.dto.SearchVehicleCriteria;
 import com.tperuch.edstest.dto.VehicleDto;
 import com.tperuch.edstest.entity.VehicleEntity;
 import com.tperuch.edstest.exception.AlreadyInUseException;
@@ -11,7 +12,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Service
 public class VehicleService {
@@ -36,6 +36,15 @@ public class VehicleService {
         return vehicles.map(VehicleMapper::mapToDto);
 
     }
+
+    public Page<VehicleDto> findAllSpecificated(PageRequest pageRequest, SearchVehicleCriteria searchVehicleCriteria){
+//        Page<VehicleEntity> vehicles = repository.findAll(pageRequest);
+        Page<VehicleEntity> vehicles = repository.findAll(searchVehicleCriteria, pageRequest);
+        return vehicles.map(VehicleMapper::mapToDto);
+
+    }
+
+
 
     private boolean IsYearInvalid(Integer year) {
         int currentYear = LocalDateTime.now().getYear();
