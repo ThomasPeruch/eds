@@ -45,12 +45,12 @@ public class VehicleService {
     }
 
     public VehicleDto updateVehicleById(Long id, VehicleDto vehicleDto) {
-        VehicleEntity mappedEntity = getVehicleEntity(id);
+        VehicleEntity vehicle = getVehicleEntity(id);
         verifyYear(vehicleDto.getYear());
-        if (!isSameChassis(mappedEntity.getChassis(), vehicleDto.getChassis())) {
+        if (!isSameChassis(vehicle.getChassis(), vehicleDto.getChassis())) {
             verifyChassis(vehicleDto.getChassis());
         }
-        return VehicleMapper.mapToDto(repository.save(mapToUpdate(mappedEntity, vehicleDto)));
+        return VehicleMapper.mapToDto(repository.save(mapToUpdate(vehicle, vehicleDto)));
     }
 
     private void verifyChassis(String chassis) {
