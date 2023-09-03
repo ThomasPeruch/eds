@@ -27,7 +27,7 @@ public class VehicleController {
     public ResponseEntity<Page<VehicleDto>> getPaginatedVehicles(
             @RequestParam(value = "page", defaultValue = "0") Integer page,
             @RequestParam(value = "linesPerPage", defaultValue = "5") Integer linesPerPage
-            ){
+    ){
         PageRequest pageRequest = PageRequest.of(page, linesPerPage);
         return new ResponseEntity(vehicleService.findAll(pageRequest), HttpStatus.OK);
     }
@@ -44,7 +44,12 @@ public class VehicleController {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Page<VehicleDto>> getVehicleById(@PathVariable Long id){
+    public ResponseEntity<VehicleDto> getVehicleById(@PathVariable Long id){
         return new ResponseEntity(vehicleService.findVehicleById(id), HttpStatus.OK);
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Page<VehicleDto>> updateVehicleById(@PathVariable Long id, @RequestBody VehicleDto vehicleDto){
+        return new ResponseEntity(vehicleService.updateVehicleById(id,vehicleDto), HttpStatus.OK);
     }
 }
