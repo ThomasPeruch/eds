@@ -78,15 +78,15 @@ public final class VehicleDtoBuilder {
     public VehicleDto build() {
         VehicleDto vehicleDto = new VehicleDto();
         vehicleDto.setId(id);
-        vehicleDto.setVehicle(vehicle);
-        vehicleDto.setBrand(brand);
-        vehicleDto.setYear(year);
-        vehicleDto.setDescription(description);
-        vehicleDto.setSold(sold);
+        vehicleDto.setVeiculo(vehicle);
+        vehicleDto.setMarca(brand);
+        vehicleDto.setAno(year);
+        vehicleDto.setDescricao(description);
+        vehicleDto.setVendido(sold);
         vehicleDto.setCreated(created);
         vehicleDto.setUpdated(updated);
-        vehicleDto.setChassis(chassis);
-        vehicleDto.setPrice(price);
+        vehicleDto.setChassi(chassis);
+        vehicleDto.setPreco(price);
         return vehicleDto;
     }
 }

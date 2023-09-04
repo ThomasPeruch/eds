@@ -25,8 +25,8 @@ public class VehicleService {
 
     public VehicleDto saveVehicle(VehicleDto vehicleDto) {
         logger.info("Iniciando processo de cadastro de veiculo - VEICULO = {}",vehicleDto);
-        verifyYear(vehicleDto.getYear());
-        verifyChassis(vehicleDto.getChassis());
+        verifyYear(vehicleDto.getAno());
+        verifyChassis(vehicleDto.getChassi());
         VehicleEntity vehicleEntity = VehicleMapper.mapToEntity(vehicleDto);
         vehicleEntity.setCreated(LocalDateTime.now());
         logger.info("Salvando veiculo na base de dados");
@@ -54,9 +54,9 @@ public class VehicleService {
     public VehicleDto updateVehicleById(Long id, VehicleDto vehicleDto) {
         logger.info("Iniciando edicao/atualizacao de veiculo - id {}", id);
         VehicleEntity vehicle = getVehicleEntity(id);
-        verifyYear(vehicleDto.getYear());
-        if (!isSameChassis(vehicle.getChassis(), vehicleDto.getChassis())) {
-            verifyChassis(vehicleDto.getChassis());
+        verifyYear(vehicleDto.getAno());
+        if (!isSameChassis(vehicle.getChassis(), vehicleDto.getChassi())) {
+            verifyChassis(vehicleDto.getChassi());
         }
         VehicleEntity entityToUpdate = mapToUpdate(vehicle, vehicleDto);
         logger.info("Salvando veiculo atualizado - VEICULO: {}", entityToUpdate);
@@ -97,13 +97,13 @@ public class VehicleService {
 
     private VehicleEntity mapToUpdate(VehicleEntity entityFromDatabase, VehicleDto vehicleDto) {
         VehicleEntity entityToUpdate = entityFromDatabase;
-        entityToUpdate.setVehicle(vehicleDto.getVehicle());
-        entityToUpdate.setSold(vehicleDto.isSold());
-        entityToUpdate.setYear(vehicleDto.getYear());
-        entityToUpdate.setDescription(vehicleDto.getDescription());
-        entityToUpdate.setBrand(vehicleDto.getBrand());
-        entityToUpdate.setChassis(vehicleDto.getChassis());
-        entityToUpdate.setPrice(vehicleDto.getPrice());
+        entityToUpdate.setVehicle(vehicleDto.getVeiculo());
+        entityToUpdate.setSold(vehicleDto.isVendido());
+        entityToUpdate.setYear(vehicleDto.getAno());
+        entityToUpdate.setDescription(vehicleDto.getDescricao());
+        entityToUpdate.setBrand(vehicleDto.getMarca());
+        entityToUpdate.setChassis(vehicleDto.getChassi());
+        entityToUpdate.setPrice(vehicleDto.getPreco());
         entityToUpdate.setUpdated(LocalDateTime.now());
         return entityToUpdate;
     }

@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tperuch.edstest.dto.VehicleDto;
 import com.tperuch.edstest.service.VehicleService;
-import com.tperuch.edstest.stub.PageRequestStub;
 import com.tperuch.edstest.stub.VehicleDtoStub;
 import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.Test;
@@ -20,7 +19,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -88,7 +86,7 @@ class VehicleControllerTest {
     @Test
     void shouldNotSaveVehicleWhenYearIsInvalid() throws Exception {
         VehicleDto vehicleDto = VehicleDtoStub.getStub();
-        vehicleDto.setYear(2025);
+        vehicleDto.setAno(2025);
 
         String json = objectToJson(vehicleDto);
 

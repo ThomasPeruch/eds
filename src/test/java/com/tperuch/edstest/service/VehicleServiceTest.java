@@ -8,13 +8,11 @@ import com.tperuch.edstest.stub.PageRequestStub;
 import com.tperuch.edstest.stub.SearchVehicleCriteriaStub;
 import com.tperuch.edstest.stub.VehicleDtoStub;
 import com.tperuch.edstest.stub.VehicleEntityStub;
-import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 
@@ -39,7 +37,7 @@ class VehicleServiceTest {
     void saveVehicle() {
         VehicleDto dto = VehicleDtoStub.getStub();
 
-        when(repository.existsByChassis(dto.getChassis())).thenReturn(false);
+        when(repository.existsByChassis(dto.getChassi())).thenReturn(false);
         when(repository.save(any())).thenReturn(VehicleEntityStub.getStub());
 
         VehicleDto vehicleDto = service.saveVehicle(dto);
@@ -50,7 +48,7 @@ class VehicleServiceTest {
     @Test
     void shouldNotSaveBecauseYearIsInvalid() {
         VehicleDto dto = VehicleDtoStub.getStub();
-        dto.setYear(2025);
+        dto.setAno(2025);
 
         Exception exception = assertThrows(Exception.class, () -> service.saveVehicle(dto));
 
@@ -62,7 +60,7 @@ class VehicleServiceTest {
     void shouldNotSaveBecauseChassisAlreadyExists() {
         VehicleDto dto = VehicleDtoStub.getStub();
 
-        when(repository.existsByChassis(dto.getChassis())).thenReturn(true);
+        when(repository.existsByChassis(dto.getChassi())).thenReturn(true);
 
         Exception exception = assertThrows(Exception.class, () -> service.saveVehicle(dto));
 

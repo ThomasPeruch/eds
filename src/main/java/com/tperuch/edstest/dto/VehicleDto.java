@@ -16,23 +16,23 @@ public class VehicleDto {
 
     @NotNull(message = "Veículo deve ser informado")
     @NotBlank(message = "Veículo deve ser informado")
-    @Pattern(regexp = "^[^\\/:*?\\\"<>|]+$", message = "Caracter invalido inserido no campo vehicle/veiculo")
-    private String vehicle;
+    @Pattern(regexp = "^[^\\/:*?\\\"<>|]+$", message = "Caracter invalido inserido no campo veiculo")
+    private String veiculo;
 
     @NotNull(message = "Marca deve ser informada")
     @NotBlank(message = "Marca deve ser informada")
-    @Pattern(regexp = "^[^\\/:*?\\\"<>|]+$", message = "Caracter invalido inserido no campo brand/marca")
-    private String brand;
+    @Pattern(regexp = "^[^\\/:*?\\\"<>|]+$", message = "Caracter invalido inserido no campo marca")
+    private String marca;
 
     @NotNull(message = "Ano deve ser informado")
-    private Integer year;
+    private Integer ano;
 
     @NotNull(message = "Descricao deve ser informado")
     @NotBlank(message = "Descricao deve ser informada")
-    @Pattern(regexp = "^[^\\/:*?\\\"<>|]+$", message = "Caracter invalido inserido no campo description/descricao")
-    private String description;
+    @Pattern(regexp = "^[^\\/:*?\\\"<>|]+$", message = "Caracter invalido inserido no campo descricao")
+    private String descricao;
 
-    private boolean sold;
+    private boolean vendido;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
@@ -44,13 +44,13 @@ public class VehicleDto {
 
     @NotNull(message = "Chassi deve ser informado")
     @NotBlank(message = "Chassi deve ser informado")
-    @Pattern(regexp = "^[^\\/:*?\\\"<>|]+$", message = "Caracter invalido inserido no campo brand/marca")
-    private String chassis;
+    @Pattern(regexp = "^[^\\/:*?\\\"<>|]+$", message = "Caracter invalido inserido no campo chassi")
+    private String chassi;
 
     @NotNull(message = "Preço deve ser informado")
     @PositiveOrZero(message = "O Preço não pode ser negativo")
     @NumberFormat(style = NumberFormat.Style.CURRENCY)
-    private BigDecimal price;
+    private BigDecimal preco;
 
     public Long getId() {
         return id;
@@ -60,44 +60,44 @@ public class VehicleDto {
         this.id = id;
     }
 
-    public String getVehicle() {
-        return vehicle;
+    public String getVeiculo() {
+        return veiculo;
     }
 
-    public void setVehicle(String vehicle) {
-        this.vehicle = vehicle;
+    public void setVeiculo(String veiculo) {
+        this.veiculo = veiculo;
     }
 
-    public String getBrand() {
-        return brand;
+    public String getMarca() {
+        return marca;
     }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
+    public void setMarca(String marca) {
+        this.marca = marca;
     }
 
-    public Integer getYear() {
-        return year;
+    public Integer getAno() {
+        return ano;
     }
 
-    public void setYear(Integer year) {
-        this.year = year;
+    public void setAno(Integer ano) {
+        this.ano = ano;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
-    public boolean isSold() {
-        return sold;
+    public boolean isVendido() {
+        return vendido;
     }
 
-    public void setSold(boolean sold) {
-        this.sold = sold;
+    public void setVendido(boolean vendido) {
+        this.vendido = vendido;
     }
 
     public LocalDateTime getCreated() {
@@ -116,19 +116,19 @@ public class VehicleDto {
         this.updated = updated;
     }
 
-    public String getChassis() {
-        return chassis;
+    public String getChassi() {
+        return chassi;
     }
 
-    public void setChassis(String chassis) {
-        this.chassis = chassis;
+    public void setChassi(String chassi) {
+        this.chassi = chassi;
     }
 
-    public BigDecimal getPrice() {
-        return price;
+    public BigDecimal getPreco() {
+        return preco;
     }
 
-    public void setPrice(BigDecimal price) {
-        this.price = price;
+    public void setPreco(BigDecimal preco) {
+        this.preco = preco;
     }
 }

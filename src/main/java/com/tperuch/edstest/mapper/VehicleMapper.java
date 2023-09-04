@@ -8,13 +8,13 @@ import com.tperuch.edstest.entity.VehicleEntityBuilder;
 public class VehicleMapper {
     public static VehicleEntity mapToEntity(VehicleDto vehicleDto) {
         return VehicleEntityBuilder.builder()
-                .vehicle(vehicleDto.getVehicle())
-                .brand(vehicleDto.getBrand())
-                .chassis(vehicleDto.getChassis())
-                .description(vehicleDto.getDescription())
-                .price(vehicleDto.getPrice())
-                .year(vehicleDto.getYear())
-                .sold(vehicleDto.isSold())
+                .vehicle(vehicleDto.getVeiculo())
+                .brand(vehicleDto.getMarca())
+                .chassis(vehicleDto.getChassi())
+                .description(vehicleDto.getDescricao())
+                .price(vehicleDto.getPreco())
+                .year(vehicleDto.getAno())
+                .sold(vehicleDto.isVendido())
                 .build();
     }
 
