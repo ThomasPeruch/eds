@@ -33,8 +33,10 @@ Três parâmetros devem ser passados como query param e são eles:<br>
 
 Exemplos:<br>
 Caso deseje buscar veiculos somente da marca BMW<br/>
+![filtroPorMarca](https://github.com/ThomasPeruch/eds/blob/master/assets/img/filtroPorMarca.png)
 
 Ou deseje buscar por veículos com o preço minimo de R$50000<br/>
+![filtroPorPrecoMinimo](https://github.com/ThomasPeruch/eds/blob/master/assets/img/filtroPorPrecoMinimo.png)
 
 No enunciado original esse endpoint(rota) deveria ser igual ao de cima ```GET /veiculos``` somente com diferentes parametros como query string.<br> 
 No entanto não foi possível seguir com o enunciado original, pois o Spring não permite dois endpoints iguais em nomenclatura e metodo HTTP.<br>
