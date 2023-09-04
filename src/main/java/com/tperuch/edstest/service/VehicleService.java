@@ -55,7 +55,7 @@ public class VehicleService {
         logger.info("Iniciando edicao/atualizacao de veiculo - id {}", id);
         VehicleEntity vehicle = getVehicleEntity(id);
         verifyYear(vehicleDto.getAno());
-        if (!isSameChassis(vehicle.getChassis(), vehicleDto.getChassi())) {
+        if (!isSameChassis(vehicle.getChassi(), vehicleDto.getChassi())) {
             verifyChassis(vehicleDto.getChassi());
         }
         VehicleEntity entityToUpdate = mapToUpdate(vehicle, vehicleDto);
@@ -69,7 +69,7 @@ public class VehicleService {
     }
 
     private void verifyChassis(String chassis) {
-        if (repository.existsByChassis(chassis)) {
+        if (repository.existsByChassi(chassis)) {
             logger.error("Chassi ja registrado, favor escolher outro");
             throw new IllegalArgumentException("Chassi ja registrado, favor escolher outro");
         }
@@ -97,13 +97,13 @@ public class VehicleService {
 
     private VehicleEntity mapToUpdate(VehicleEntity entityFromDatabase, VehicleDto vehicleDto) {
         VehicleEntity entityToUpdate = entityFromDatabase;
-        entityToUpdate.setVehicle(vehicleDto.getVeiculo());
-        entityToUpdate.setSold(vehicleDto.isVendido());
-        entityToUpdate.setYear(vehicleDto.getAno());
-        entityToUpdate.setDescription(vehicleDto.getDescricao());
-        entityToUpdate.setBrand(vehicleDto.getMarca());
-        entityToUpdate.setChassis(vehicleDto.getChassi());
-        entityToUpdate.setPrice(vehicleDto.getPreco());
+        entityToUpdate.setVeiculo(vehicleDto.getVeiculo());
+        entityToUpdate.setVendido(vehicleDto.isVendido());
+        entityToUpdate.setAno(vehicleDto.getAno());
+        entityToUpdate.setDescricao(vehicleDto.getDescricao());
+        entityToUpdate.setMarca(vehicleDto.getMarca());
+        entityToUpdate.setChassi(vehicleDto.getChassi());
+        entityToUpdate.setPreco(vehicleDto.getPreco());
         entityToUpdate.setUpdated(LocalDateTime.now());
         return entityToUpdate;
     }

@@ -12,30 +12,23 @@ public class VehicleEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "veiculo")
-    private String vehicle;
+    private String veiculo;
 
-    @Column(name = "marca")
-    private String brand;
+    private String marca;
 
-    @Column(name = "ano")
-    private Integer year;
+    private Integer ano;
 
-    @Column(name = "descricao")
-    private String description;
+    private String descricao;
 
-    @Column(name = "vendido")
-    private boolean sold;
+    private boolean vendido;
 
     private LocalDateTime created;
 
     private LocalDateTime updated;
 
-    @Column(name = "chassi")
-    private String chassis;
+    private String chassi;
 
-    @Column(name = "preco")
-    private BigDecimal price;
+    private BigDecimal preco;
 
     public Long getId() {
         return id;
@@ -45,44 +38,44 @@ public class VehicleEntity {
         this.id = id;
     }
 
-    public String getVehicle() {
-        return vehicle;
+    public String getVeiculo() {
+        return veiculo;
     }
 
-    public void setVehicle(String vehicle) {
-        this.vehicle = vehicle;
+    public void setVeiculo(String veiculo) {
+        this.veiculo = veiculo;
     }
 
-    public String getBrand() {
-        return brand;
+    public String getMarca() {
+        return marca;
     }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
+    public void setMarca(String marca) {
+        this.marca = marca;
     }
 
-    public Integer getYear() {
-        return year;
+    public Integer getAno() {
+        return ano;
     }
 
-    public void setYear(Integer year) {
-        this.year = year;
+    public void setAno(Integer ano) {
+        this.ano = ano;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
-    public boolean isSold() {
-        return sold;
+    public boolean isVendido() {
+        return vendido;
     }
 
-    public void setSold(boolean sold) {
-        this.sold = sold;
+    public void setVendido(boolean vendido) {
+        this.vendido = vendido;
     }
 
     public LocalDateTime getCreated() {
@@ -101,19 +94,19 @@ public class VehicleEntity {
         this.updated = updated;
     }
 
-    public String getChassis() {
-        return chassis;
+    public String getChassi() {
+        return chassi;
     }
 
-    public void setChassis(String chassis) {
-        this.chassis = chassis;
+    public void setChassi(String chassi) {
+        this.chassi = chassi;
     }
 
-    public BigDecimal getPrice() {
-        return price;
+    public BigDecimal getPreco() {
+        return preco;
     }
 
-    public void setPrice(BigDecimal price) {
-        this.price = price;
+    public void setPreco(BigDecimal preco) {
+        this.preco = preco;
     }
 }

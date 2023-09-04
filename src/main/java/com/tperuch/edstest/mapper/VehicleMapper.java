@@ -21,15 +21,15 @@ public class VehicleMapper {
     public static VehicleDto mapToDto(VehicleEntity vehicleEntity) {
         return VehicleDtoBuilder.builder()
                 .id(vehicleEntity.getId())
-                .vehicle(vehicleEntity.getVehicle())
-                .chassis(vehicleEntity.getChassis())
-                .description(vehicleEntity.getDescription())
-                .sold(vehicleEntity.isSold())
-                .year(vehicleEntity.getYear())
-                .brand(vehicleEntity.getBrand())
+                .vehicle(vehicleEntity.getVeiculo())
+                .chassis(vehicleEntity.getChassi())
+                .description(vehicleEntity.getDescricao())
+                .sold(vehicleEntity.isVendido())
+                .year(vehicleEntity.getAno())
+                .brand(vehicleEntity.getMarca())
                 .created(vehicleEntity.getCreated())
                 .updated(vehicleEntity.getUpdated())
-                .price(vehicleEntity.getPrice())
+                .price(vehicleEntity.getPreco())
                 .build();
     }
 }

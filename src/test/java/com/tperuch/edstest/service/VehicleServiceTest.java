@@ -37,7 +37,7 @@ class VehicleServiceTest {
     void saveVehicle() {
         VehicleDto dto = VehicleDtoStub.getStub();
 
-        when(repository.existsByChassis(dto.getChassi())).thenReturn(false);
+        when(repository.existsByChassi(dto.getChassi())).thenReturn(false);
         when(repository.save(any())).thenReturn(VehicleEntityStub.getStub());
 
         VehicleDto vehicleDto = service.saveVehicle(dto);
@@ -60,7 +60,7 @@ class VehicleServiceTest {
     void shouldNotSaveBecauseChassisAlreadyExists() {
         VehicleDto dto = VehicleDtoStub.getStub();
 
-        when(repository.existsByChassis(dto.getChassi())).thenReturn(true);
+        when(repository.existsByChassi(dto.getChassi())).thenReturn(true);
 
         Exception exception = assertThrows(Exception.class, () -> service.saveVehicle(dto));
 
@@ -127,18 +127,18 @@ class VehicleServiceTest {
         VehicleDto dto = VehicleDtoStub.getStub();
         VehicleEntity vehicleEntity = VehicleEntityStub.getStub();
         vehicleEntity.setId(1L);
-        vehicleEntity.setChassis("abc");
+        vehicleEntity.setChassi("abc");
 
         VehicleEntity updatedEntity = vehicleEntity;
         updatedEntity.setUpdated(LocalDateTime.now());
 
         when(repository.findById(1L)).thenReturn(Optional.of(vehicleEntity));
-        when(repository.existsByChassis(anyString())).thenReturn(true);
+        when(repository.existsByChassi(anyString())).thenReturn(true);
 
         Exception exception = assertThrows(Exception.class, () -> service.updateVehicleById(1L, dto));
 
         verify(repository, times(1)).findById(1L);
-        verify(repository, times(1)).existsByChassis(anyString());
+        verify(repository, times(1)).existsByChassi(anyString());
         assertEquals("Chassi ja registrado, favor escolher outro", exception.getMessage());
         assertEquals(exception.getClass().getName(), IllegalArgumentException.class.getName());
     }

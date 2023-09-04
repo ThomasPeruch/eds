@@ -75,15 +75,15 @@ public final class VehicleEntityBuilder {
     public VehicleEntity build() {
         VehicleEntity vehicleEntity = new VehicleEntity();
         vehicleEntity.setId(id);
-        vehicleEntity.setVehicle(vehicle);
-        vehicleEntity.setBrand(brand);
-        vehicleEntity.setYear(year);
-        vehicleEntity.setDescription(description);
-        vehicleEntity.setSold(sold);
+        vehicleEntity.setVeiculo(vehicle);
+        vehicleEntity.setMarca(brand);
+        vehicleEntity.setAno(year);
+        vehicleEntity.setDescricao(description);
+        vehicleEntity.setVendido(sold);
         vehicleEntity.setCreated(created);
         vehicleEntity.setUpdated(updated);
-        vehicleEntity.setChassis(chassis);
-        vehicleEntity.setPrice(price);
+        vehicleEntity.setChassi(chassis);
+        vehicleEntity.setPreco(price);
         return vehicleEntity;
     }
 }

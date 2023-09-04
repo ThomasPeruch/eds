@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface VehicleRepository extends JpaRepository<VehicleEntity, Long>, JpaSpecificationExecutor<VehicleEntity> {
-    boolean existsByChassis(String chassis);
+    boolean existsByChassi(String chassis);
     Page<VehicleEntity> findAll(Pageable pageable);
 }
