@@ -20,6 +20,11 @@ Banco escolhido: PostgreSQL
   
 ```GET /veiculos```
 <br><br>Retorna todos os veículos paginados, cada página por padrão tem 5 itens
+Este endpoint funciona da seguinte forma:
+Dois parâmetros devem ser passados como query param e são eles:<br>
+- <i>page</i>: Representa a pagina <br>
+- <i>linesPerPage</i>: Número de itens que aparecerão por página<br>
+<br> ![buscaPaginada](https://github.com/ThomasPeruch/eds/blob/master/assets/img/buscaPaginada.png)
 <hr>
 
 ```GET /veiculos/search```
