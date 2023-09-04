@@ -28,7 +28,7 @@ Retorna os veículos de acordo com filtros passados através de query string.<br
 No enunciado original esse endpoint(rota) deveria ser igual ao de cima ```GET /veiculos``` somente com diferentes parametros como query string.<br> 
 No entanto não foi possível seguir com o enunciado original, pois o Spring não permite dois endpoints iguais em nomenclatura e metodo HTTP.<br>
 Por isso esse endpoint foi modificado para <i>/search</i>
-<br>Segue print do erro: 
+<br>Segue print do erro: <br>
 ![ambiguos mapping controller](https://github.com/ThomasPeruch/eds/assets/60239342/8544980f-a48d-458e-b708-568c113b3cce)
 
 <hr>
