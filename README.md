@@ -81,5 +81,20 @@ Para rodar aplicação certifique de ter os seguintes requisitos atentidos:<br>
 - Possuir Docker e docker compose<br>
 - E ter as seguintes portas disponiveis no seu computador: 8080 para a aplicação e 5432 para o banco de dados postgres.
 
-Executar o comando <i>docker-compose up -d</i> na pasta raíz do projeto, assim será criado um container com especificações descritas no arquivo docker-compose.yml.<br>Nesse caso é subir uma instância do banco PostgreSQL.<br><br>
+Executar o comando <i>docker-compose up -d</i> na pasta raíz do projeto, assim será criado um container com especificações descritas no arquivo docker-compose.yml. Nesse caso é subir uma instância do banco PostgreSQL.
+
+<hr>
+
 Link do swagger do projeto http://127.0.0.1:8080/swagger-ui.html , somente acessível quando a aplicação já estiver rodando.
+
+<hr>
+
+Para importar a collection e interagir com a aplicação clique [aqui](https://github.com/ThomasPeruch/eds/blob/master/assets/collection/collection.md) e siga as instruçoes. 
+
+<hr>
+
+Credencias de acesso do banco de dados PostgreSQL do projeto:<br>
+url: <i>jdbc:postgresql://localhost:5432/eds</i><br>
+usuario: <i>postgres</i><br>
+senha: <i>eds</i><br><br>
+Obs: essas mesmas credencias podem ser encontradas no arquivo [application.properties](https://github.com/ThomasPeruch/eds/blob/master/src/main/resources/application.properties) da aplicação
