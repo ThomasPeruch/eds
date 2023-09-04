@@ -64,3 +64,13 @@ Atualiza os dados de um veículo
 ```DELETE /veiculos/{id}```
 
 Apaga o veículo
+
+<h2>Instruções</h2>
+
+Para rodar aplicação certifique de ter os seguintes requisitos atentidos:<br>
+- Possuir java 17<br>
+- Possuir Docker e docker compose<br>
+- E ter as seguintes portas disponiveis no seu computador: 8080 para a aplicação e 5432 para o banco de dados postgres.
+
+Executar o comando <i>docker-compose up -d</i> na pasta raíz do projeto, assim será criado um container com especificações descritas no arquivo docker-compose.yml.<br>Nesse caso é subir uma instância do banco PostgreSQL.<br><br>
+Link do swagger do projeto http://127.0.0.1:8080/swagger-ui.html , somente acessível quando a aplicação já estiver rodando.
