@@ -24,7 +24,18 @@ Banco escolhido: PostgreSQL
 
 ```GET /veiculos/search```
 
-Retorna os veículos de acordo com filtros passados através de query string.<br>
+Tambem paginado como o endpoint acima, retorna os veículos de acordo com filtros passados através de query string.<br><br>
+Este endpoint funciona da seguinte forma:
+Três parâmetros devem ser passados como query param e são eles:<br>
+- <i>field</i>: Representa qual campo será usado na busca filtrada<br>
+- <i>operator</i>: Representa qual comparação será feita, igual, maior ...<br>
+- <i>value</i>: Represntar qual valor sera buscado no filtro.<br>
+
+Exemplos:<br>
+Caso deseje buscar veiculos somente da marca BMW<br/>
+
+Ou deseje buscar por veículos com o preço minimo de R$50000<br/>
+
 No enunciado original esse endpoint(rota) deveria ser igual ao de cima ```GET /veiculos``` somente com diferentes parametros como query string.<br> 
 No entanto não foi possível seguir com o enunciado original, pois o Spring não permite dois endpoints iguais em nomenclatura e metodo HTTP.<br>
 Por isso esse endpoint foi modificado para <i>/search</i>
