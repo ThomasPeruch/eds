@@ -65,6 +65,15 @@ Atualiza os dados de um veículo
 
 Apaga o veículo
 
+<h3>Tecnologias Utilizadas</h3>
+
+- Java 17
+- Spring 3
+- Springdoc open api integrado com interface do Swagger UI
+- PostgreSQL(via docker compose)
+- Maven
+- Docker
+
 <h2>Instruções</h2>
 
 Para rodar aplicação certifique de ter os seguintes requisitos atentidos:<br>
